@@ -1,0 +1,37 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="mViewModel"
+                type="radhika.yusuf.id.mvvmkotlin.mvvm.home.HomeViewModel"/>
+
+        <variable
+                name="mListener"
+                type="radhika.yusuf.id.mvvmkotlin.mvvm.home.HomeUserActionListener"/>
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:refreshing="@{mViewModel.isRequesting}"
+                app:setOnRefreshListener="@{()->mListener.onRefreshPage()}">
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:listDataHome="@{mViewModel.HomeList}"/>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

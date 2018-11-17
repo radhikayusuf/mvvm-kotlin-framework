@@ -1,0 +1,5 @@
+<resources>
+    <string name="text_close">Close</string>
+    <string name="text_refreshing">Refreshing…</string>
+    <string name="text_hello_from_radhika">"Hello from Radhika!"</string>
+</resources>

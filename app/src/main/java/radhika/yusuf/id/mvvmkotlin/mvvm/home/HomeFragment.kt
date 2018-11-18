@@ -1,18 +1,18 @@
 package radhika.yusuf.id.mvvmkotlin.mvvm.home
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import android.arch.lifecycle.Observer
 import radhika.yusuf.id.mvvmkotlin.R
 import radhika.yusuf.id.mvvmkotlin.databinding.FragmentHomeBinding
 import radhika.yusuf.id.mvvmkotlin.utils.base.BaseFragment
 import radhika.yusuf.id.mvvmkotlin.utils.chocohelper.ChocoBinding
-import radhika.yusuf.id.mvvmkotlin.utils.chocohelper.ChocoViewModel
 import radhika.yusuf.id.mvvmkotlin.utils.chocohelper.ChocoChips
+import radhika.yusuf.id.mvvmkotlin.utils.chocohelper.ChocoViewModel
 
 
 class HomeFragment : BaseFragment<HomeViewModel>(), HomeUserActionListener {
@@ -23,7 +23,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(), HomeUserActionListener {
     @ChocoViewModel
     lateinit var mViewModel: HomeViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         ChocoChips.inject<FragmentHomeBinding, HomeViewModel, HomeUserActionListener>(this)
         return mViewDataBinding.root
     }
@@ -51,10 +51,6 @@ class HomeFragment : BaseFragment<HomeViewModel>(), HomeUserActionListener {
         return MESSAGE_TYPE_SNACK_CUSTOM
     }
 
-    override fun getViewModel(): HomeViewModel {
-        return mViewModel
-    }
-
     override fun onDestroyObserver(viewModel: HomeViewModel) {
         viewModel.eventClickItem.removeObservers(this)
     }
@@ -62,7 +58,6 @@ class HomeFragment : BaseFragment<HomeViewModel>(), HomeUserActionListener {
     override fun onClickItem(data: HomeModel) {
         Toast.makeText(activity, data.title, Toast.LENGTH_SHORT).show()
     }
-
 
     companion object {
         fun newInstance() = HomeFragment().apply {

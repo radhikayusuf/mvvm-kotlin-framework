@@ -1,6 +1,5 @@
 package radhika.yusuf.id.mvvmkotlin.utils.helper
 
-import android.annotation.SuppressLint
 import android.app.Application
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider

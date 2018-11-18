@@ -18,7 +18,7 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment(), BaseNavigator {
 
     override fun onViewCreated(paramView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(paramView, savedInstanceState)
-        mParentVM = getViewModel().apply {
+        mParentVM.apply {
             showMessage.observe(this@BaseFragment, Observer {
                 if (it != null) {
                     when (mMessageType) {
@@ -69,7 +69,6 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment(), BaseNavigator {
 
 
     abstract fun onCreateObserver(viewModel: T)
-    abstract fun getViewModel(): T
     abstract fun setContentData()
     abstract fun setMessageType(): String
     abstract fun onDestroyObserver(viewModel: T)

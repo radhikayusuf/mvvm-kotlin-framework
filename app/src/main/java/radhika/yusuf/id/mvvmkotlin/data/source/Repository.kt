@@ -11,7 +11,7 @@ class Repository(private val remoteDataSource: DataSource, private val localData
 
         remoteDataSource.getListHeroes(refresh, object : DataSource.GetHeroesCallback {
             override fun onSuccess(data: List<HeroesModel>) {
-                saveListHeros(data)
+                saveListHeroes(data)
                 localDataSource.getListHeroes(false, callback)
             }
 
@@ -26,8 +26,8 @@ class Repository(private val remoteDataSource: DataSource, private val localData
         })
     }
 
-    override fun saveListHeros(data: List<HeroesModel>) {
-        localDataSource.saveListHeros(data)
+    override fun saveListHeroes(data: List<HeroesModel>) {
+        localDataSource.saveListHeroes(data)
     }
 
 }

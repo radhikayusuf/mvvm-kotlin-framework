@@ -10,7 +10,7 @@ interface DataSource {
         callback: GetHeroesCallback
     )
 
-    fun saveListHeros(data: List<HeroesModel>)
+    fun saveListHeroes(data: List<HeroesModel>)
 
     interface GetHeroesCallback{
 

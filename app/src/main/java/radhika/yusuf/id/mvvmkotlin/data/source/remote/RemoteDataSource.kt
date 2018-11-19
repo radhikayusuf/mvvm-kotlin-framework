@@ -2,8 +2,8 @@ package radhika.yusuf.id.mvvmkotlin.data.source.remote
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import radhika.yusuf.id.mvvmkotlin.data.source.DataSource
 import radhika.yusuf.id.mvvmkotlin.data.model.HeroesModel
+import radhika.yusuf.id.mvvmkotlin.data.source.DataSource
 import radhika.yusuf.id.mvvmkotlin.utils.base.BaseApiModel
 
 /**
@@ -43,7 +43,7 @@ object RemoteDataSource : DataSource {
             })
     }
 
-    override fun saveListHeros(data: List<HeroesModel>) {
+    override fun saveListHeroes(data: List<HeroesModel>) {
 
     }
 

@@ -1,8 +1,8 @@
 package radhika.yusuf.id.mvvmkotlin.data.source.local
 
 import android.content.Context
-import radhika.yusuf.id.mvvmkotlin.data.source.DataSource
 import radhika.yusuf.id.mvvmkotlin.data.model.HeroesModel
+import radhika.yusuf.id.mvvmkotlin.data.source.DataSource
 import radhika.yusuf.id.mvvmkotlin.data.source.local.room.AppDatabase
 import radhika.yusuf.id.mvvmkotlin.data.source.local.room.HeroesDao
 
@@ -12,7 +12,7 @@ class LocalDataSource(context: Context) : DataSource {
         AppDatabase.getInstance(context).heroesDao()
     }
 
-    override fun saveListHeros(data: List<HeroesModel>) {
+    override fun saveListHeroes(data: List<HeroesModel>) {
         mHeroesTable.deleteAllHeroes()
         for (model in data) {
             mHeroesTable.insertHeroes(model)
@@ -21,8 +21,9 @@ class LocalDataSource(context: Context) : DataSource {
 
     override fun getListHeroes(refresh: Boolean, callback: DataSource.GetHeroesCallback) {
         try {
-            if ((mHeroesTable.retrievedHeroes()?: arrayListOf()).isNotEmpty()) {
-                callback.onSuccess(mHeroesTable.retrievedHeroes()!!)
+            val data = (mHeroesTable.retrievedHeroes()?: arrayListOf())
+            if (data.isNotEmpty()) {
+                callback.onSuccess(data)
             }
         } catch (e: Exception){
             callback.onError(e.message?:e.localizedMessage)

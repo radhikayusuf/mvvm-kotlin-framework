@@ -29,7 +29,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(), HomeUserActionListener {
     }
 
     override fun setContentData() {
-        mViewDataBinding.recyclerHome.adapter = HomeAdapter(mViewModel.homeList, mViewModel)
+        mViewDataBinding.recyclerHome.adapter = HomeAdapter(mViewModel)
         mViewDataBinding.recyclerHome.layoutManager = LinearLayoutManager(context)
     }
 

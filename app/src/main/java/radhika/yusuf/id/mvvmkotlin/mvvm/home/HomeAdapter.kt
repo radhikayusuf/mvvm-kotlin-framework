@@ -1,16 +1,17 @@
 package radhika.yusuf.id.mvvmkotlin.mvvm.home
 
 
+import android.databinding.ObservableList
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import radhika.yusuf.id.mvvmkotlin.R
 import radhika.yusuf.id.mvvmkotlin.databinding.ItemHomeBinding
 
 
-class HomeAdapter(var mData: List<HomeModel>, private val mViewModel: HomeViewModel) :
+class HomeAdapter(private val mViewModel: HomeViewModel) :
     RecyclerView.Adapter<HomeAdapter.HomeItem>() {
 
+    private var mData = mViewModel.homeList
 
     override fun onBindViewHolder(holder: HomeItem, position: Int) {
         holder.bind(mData[position], mViewModel)
@@ -27,7 +28,7 @@ class HomeAdapter(var mData: List<HomeModel>, private val mViewModel: HomeViewMo
 
 
     fun replaceData(data: List<HomeModel>) {
-        mData = data
+        mData = data as ObservableList<HomeModel>
         notifyDataSetChanged()
     }
 
